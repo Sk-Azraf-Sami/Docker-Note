@@ -1,0 +1,21 @@
+version: "3"
+services: 
+  # container-1
+  node-app:
+    build: .
+    ports: 
+      - "3000:3000"
+    environment: 
+      - PORT=3000
+
+  # container-2: https://hub.docker.com/_/mongo
+  mongo: 
+    image: mongo 
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db: 
